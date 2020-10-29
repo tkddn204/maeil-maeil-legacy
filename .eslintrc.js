@@ -36,17 +36,18 @@ module.exports = {
   ignorePatterns: ['serviceWorker.ts'],
   rules: {
     'function-paren-newline': 'off',
-    'linebreak-style': 'off',
     'implicit-arrow-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
     'import/extensions': 'off', // Don't need to specify file's extension
     'import/no-extraneous-dependencies': 'off', // Allow import modules like @reach/router
     'import/prefer-default-export': 'off', // Disable to avoid bugs and issues with Gatsby API
-    'object-curly-newline': 'off', // Disable to avoid conflict between prettier and object destructuring in argument
-    'operator-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
-    'prettier/prettier': 'error',
     'no-underscore-dangle': 'off', // allow for private methods with _,
     'no-param-reassign': 'off', // needed for tools like immer
     'no-use-before-define': 'off', // issue with React Scripts 4.0
+    'jsx-a11y/accessible-emoji': 'off',
+    'linebreak-style': 'off',
+    'object-curly-newline': 'off', // Disable to avoid conflict between prettier and object destructuring in argument
+    'operator-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
+    'prettier/prettier': 'error',
     'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     'react/jsx-filename-extension': 'off', // Don't need to specify file's extension
     'react/jsx-one-expression-per-line': 'off', // Disable to avoid conflicts between prettier and eslint when using props in the same line as other element
