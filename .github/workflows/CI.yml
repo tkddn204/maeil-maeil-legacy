@@ -1,0 +1,26 @@
+name: CI for test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+        # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+        # Runs linter
+      - name: Lint
+        run: npm run lint
+
+      # Runs tests
+      - name: Tests
+        run: npm run test:coverage

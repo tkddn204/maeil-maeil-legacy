@@ -1,0 +1,11 @@
+{
+  typescript: true,
+  memo: true,
+  prettier: true,
+  svgo: true,
+  svgProps: {
+    fill: "currentColor",
+    width: "inherit",
+    height: "inherit"
+  }
+}
