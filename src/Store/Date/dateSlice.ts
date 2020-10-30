@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import { DateTime } from 'luxon';
 
-interface DateState {
+export interface DateState {
   current: DateTime;
 }
 
