@@ -1,10 +1,13 @@
 import { DateTime, DurationObjectUnits } from 'luxon';
 import React, { ReactElement, useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import styled, { css } from 'styled-components';
+
 import { RootState } from '../../Store';
 import { change } from '../../Store/Date/dateSlice';
 
+// style  ---------------------------------------------------
+type StyleProps = ContainerProps;
 interface ContainerProps {
   color?: string;
 }
@@ -39,22 +42,16 @@ const MinusDateButton = styled.button`
   ${ButtonStyle}
 `;
 
-interface StateProps {
-  date?: DateTime;
-}
-
-interface DispatchProps {
-  changeDate?: typeof change;
-}
-
+// props  ---------------------------------------------------
 type DateFormat = 'default' | string;
-interface OwnProps extends ContainerProps {
+interface OwnProps {
+  date?: DateTime;
   format?: DateFormat;
 }
+export type DateViewerProps = Partial<PropsFromRedux> & StyleProps & OwnProps;
 
-export type DateViewerProps = StateProps & DispatchProps & OwnProps;
-
-export function DateViewer({
+// Element  -------------------------------------------------
+export function PureDateViewer({
   date,
   changeDate,
   format = 'default',
@@ -92,14 +89,14 @@ export function DateViewer({
   );
 }
 
-const mapStateToProps = ({ date }: RootState, { color }: OwnProps) => ({
+// Redux connector  ------------------------------------------
+const mapStateToProps = ({ date }: RootState) => ({
   date: date.current,
-  color,
 });
-const mapDispatch: DispatchProps = {
+const mapDispatch = {
   changeDate: change,
 };
-export default connect<StateProps, DispatchProps, OwnProps, RootState>(
-  mapStateToProps,
-  mapDispatch,
-)(DateViewer);
+const connector = connect(mapStateToProps, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(PureDateViewer);

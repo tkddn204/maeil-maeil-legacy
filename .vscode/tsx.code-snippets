@@ -1,0 +1,61 @@
+{
+	// Place your maeil-maeil 작업 영역 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Redux Snippet": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "rrsf",
+		"body": [
+			"import React, { ReactElement } from 'react';"
+			"import { connect, ConnectedProps } from 'react-redux';"
+			"import styled from 'styled-components';"
+			"import { RootState } from '../../Store';"
+			""
+			"// style  ---------------------------------------------------"
+			"type StyleProps = ContainerProps;"
+			"interface ContainerProps {"
+			"	// style props"
+			"}"
+			"const Container = styled.div<ContainerProps>`"
+			"	display: flex;"
+			"`;"
+			""
+			"// props  ---------------------------------------------------"
+			"interface OwnProps {"
+			"	// Own Props"
+			"}"
+			"export type $1Props = Partial<PropsFromRedux> & StyleProps & OwnProps;"
+			""
+			"// Element  -------------------------------------------------"
+			"export function Pure$1({}: $1Props): ReactElement {"
+			"	return <Container>hello</Container>;"
+			"}"
+			""
+			"// Redux connector  ------------------------------------------"
+			"const mapStateToProps = ({}: RootState) => ({"
+			"	// props"
+			"});"
+			"const mapDispatch = {"
+			"	// dispatch functions"
+			"};"
+			"const connector = connect(mapStateToProps, mapDispatch);"
+			"type PropsFromRedux = ConnectedProps<typeof connector>;"
+			""
+			"export default connector(Pure$1);"
+		],
+		"description": "redux 쓰는 tsx 파일 만들때 편하게 쓰려고 만듦"
+	}
+}

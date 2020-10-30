@@ -1,15 +1,15 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { DateViewer, DateViewerProps } from '.';
+import React from 'react';
+import { DateViewerProps, PureDateViewer } from '.';
 
 export default {
   title: 'Components/DateViewer',
-  component: DateViewer,
+  component: PureDateViewer,
 } as Meta;
 
 type StoryProps = DateViewerProps;
 
-export const DateViewerComponent: Story<StoryProps> = () => <DateViewer />;
+export const DateViewerComponent: Story<StoryProps> = () => <PureDateViewer />;
 export const ColoredDateViewer: Story<StoryProps> = () => (
-  <DateViewer color="red" />
+  <PureDateViewer color="red" />
 );
