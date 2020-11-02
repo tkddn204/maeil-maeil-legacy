@@ -15,19 +15,19 @@ const initialState: DateState = {
 };
 
 interface DateSliceCaseReducers extends SliceCaseReducers<DateState> {
-  change: CaseReducer<DateState, PayloadAction<DateTime>>;
+  changeDate: CaseReducer<DateState, PayloadAction<DateTime>>;
 }
 
 export const dateSlice = createSlice<DateState, DateSliceCaseReducers>({
   name: 'date',
   initialState,
   reducers: {
-    change: (state, action) => {
+    changeDate: (state, action) => {
       state.current = action.payload;
     },
   },
 });
 
-export const { change } = dateSlice.actions;
+export const { changeDate } = dateSlice.actions;
 
 export default dateSlice.reducer;

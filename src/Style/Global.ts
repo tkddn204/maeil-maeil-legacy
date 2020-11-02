@@ -29,10 +29,10 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
 `;
 
 export default GlobalStyle;

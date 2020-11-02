@@ -1,30 +1,38 @@
 import React, { ReactElement } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import styled from 'styled-components';
-import { RootState } from '../../Store';
+import { Todo, TodoCollection } from '../../Store/types';
+import { TodoItem } from './TodoItem';
 
 // style  ---------------------------------------------------
-type StyleProps = ContainerProps;
-interface ContainerProps {
+interface StyleProps {
   // style props
 }
-const Container = styled.div<ContainerProps>`
+const Container = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
 // props  ---------------------------------------------------
 interface OwnProps {
-  // Own Props
+  todoList: TodoCollection;
 }
 export type TodoListProps = Partial<PropsFromRedux> & StyleProps & OwnProps;
 
 // Element  -------------------------------------------------
-export function PureTodoList({}: TodoListProps): ReactElement {
-  return <Container>hello</Container>;
+export function PureTodoList({ todoList }: TodoListProps): ReactElement {
+  const todoValues = Object.values(todoList) as Todo[];
+  return (
+    <Container>
+      {todoValues.map((todo: Todo) => (
+        <TodoItem>{todo}</TodoItem>
+      ))}
+    </Container>
+  );
 }
 
 // Redux connector  ------------------------------------------
-const mapStateToProps = ({}: RootState) => ({
+const mapStateToProps = () => ({
   // props
 });
 const mapDispatch = {

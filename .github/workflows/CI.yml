@@ -15,12 +15,12 @@ jobs:
 
         # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: yarn
 
         # Runs linter
       - name: Lint
-        run: npm run lint
+        run: yarn lint
 
       # Runs tests
       - name: Tests
-        run: npm run test:coverage
+        run: yarn test:coverage

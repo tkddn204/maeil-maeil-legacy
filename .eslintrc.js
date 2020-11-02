@@ -35,6 +35,7 @@ module.exports = {
   },
   ignorePatterns: ['serviceWorker.ts'],
   rules: {
+    '@typescript-eslint/no-empty-interface': 'off',
     'function-paren-newline': 'off',
     'implicit-arrow-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
     'import/extensions': 'off', // Don't need to specify file's extension
@@ -45,6 +46,7 @@ module.exports = {
     'no-use-before-define': 'off', // issue with React Scripts 4.0
     'jsx-a11y/accessible-emoji': 'off',
     'linebreak-style': 'off',
+    'no-plusplus': 'off',
     'object-curly-newline': 'off', // Disable to avoid conflict between prettier and object destructuring in argument
     'operator-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
     'prettier/prettier': 'error',

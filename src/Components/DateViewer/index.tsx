@@ -4,7 +4,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import styled, { css } from 'styled-components';
 
 import { RootState } from '../../Store';
-import { change } from '../../Store/Date/dateSlice';
+import { changeDate } from '../../Store/Date/dateSlice';
 
 // style  ---------------------------------------------------
 type StyleProps = ContainerProps;
@@ -53,7 +53,7 @@ export type DateViewerProps = Partial<PropsFromRedux> & StyleProps & OwnProps;
 // Element  -------------------------------------------------
 export function PureDateViewer({
   date,
-  changeDate,
+  changeGlobalDate,
   format = 'default',
   color,
 }: DateViewerProps): ReactElement {
@@ -67,8 +67,8 @@ export function PureDateViewer({
       ? dateState.plus(duration)
       : dateState.minus(duration);
     setDateState(changedDate);
-    if (changeDate) {
-      changeDate(changedDate);
+    if (changeGlobalDate) {
+      changeGlobalDate(changedDate);
     }
   };
 
@@ -94,7 +94,7 @@ const mapStateToProps = ({ date }: RootState) => ({
   date: date.current,
 });
 const mapDispatch = {
-  changeDate: change,
+  changeGlobalDate: changeDate,
 };
 const connector = connect(mapStateToProps, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
