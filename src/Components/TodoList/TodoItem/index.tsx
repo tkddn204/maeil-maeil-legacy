@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 
 // style  ---------------------------------------------------
@@ -17,6 +17,8 @@ interface OwnProps {
 export type TodoItemProps = StyleProps & OwnProps;
 
 // Element  -------------------------------------------------
-export function TodoItem({ children }: TodoItemProps): ReactElement {
-  return <Container>{JSON.stringify(children, null, 2)}</Container>;
-}
+const TodoItem: FC<TodoItemProps> = ({ children }) => (
+  <Container>{JSON.stringify(children, null, 2)}</Container>
+);
+
+export default TodoItem;

@@ -1,8 +1,7 @@
 import { DateTime, DurationObjectUnits } from 'luxon';
-import React, { ReactElement, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import styled, { css } from 'styled-components';
-
 import { RootState } from '../../Store';
 import { changeDate } from '../../Store/Date/dateSlice';
 
@@ -51,12 +50,12 @@ interface OwnProps {
 export type DateViewerProps = Partial<PropsFromRedux> & StyleProps & OwnProps;
 
 // Element  -------------------------------------------------
-export function PureDateViewer({
+export const PureDateViewer: FC<DateViewerProps> = ({
   date,
   changeGlobalDate,
   format = 'default',
   color,
-}: DateViewerProps): ReactElement {
+}) => {
   const [dateState, setDateState] = useState<DateTime>(
     date || DateTime.local(),
   );
@@ -87,7 +86,7 @@ export function PureDateViewer({
       </DateController>
     </Container>
   );
-}
+};
 
 // Redux connector  ------------------------------------------
 const mapStateToProps = ({ date }: RootState) => ({
